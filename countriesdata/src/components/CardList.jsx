@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import FilterDropdown from "./FilterDropdown";
+
 import { Card, Col, Container, Row } from "react-bootstrap";
 
 function CardList() {
@@ -55,9 +55,13 @@ function CardList() {
         <Col>
           <div>
             <select
+              className="btn btn-primary"
               id="country-select"
               onChange={(e) => setFilterRegion(e.target.value)}
             >
+              <option value="" className="btn btn-danger">
+                Filter by origion
+              </option>
               <option value="">All</option>
               <option value="Africa">Africa</option>
               <option value="Americas">Americas</option>
