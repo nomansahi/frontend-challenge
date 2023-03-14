@@ -1,30 +1,13 @@
-import { useState, useEffect } from "react";
-import { Container } from "react-bootstrap";
+import React from "react";
 
-function Card() {
-  const [countries, setCountries] = useState([]);
-
-  useEffect(() => {
-    fetch("https://restcountries.com/v3.1/all")
-      .then((response) => response.json())
-      .then((data) => {
-        const transformedData = data.map((d) => ({
-          name: d.name,
-        }));
-        setCountries(transformedData);
-      })
-      .catch((error) => console.log(error));
-  }, []);
-
-  console.log(countries);
+function Card(props) {
+  const { title, image, description } = props.data;
   return (
-    <Container>
-      <ul>
-        {countries.map((c) => (
-          <li>{c.name?.common}</li>
-        ))}
-      </ul>
-    </Container>
+    <div className="card">
+      <img src={image} alt={title} />
+      <h2>{title}</h2>
+      <p>{description}</p>
+    </div>
   );
 }
 

@@ -1,7 +1,8 @@
 import "./App.css";
 import Navbar from "./components/Navbar";
 import InputSearch from "./components/InputSearch";
-import Card from "./components/Card";
+// import CardDetails from "./components/CardDetails";
+import Card from "./components/CardList";
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
       <Navbar />
       <InputSearch />
       <Card />
+      {/* <CardDetails /> */}
     </div>
   );
 }
