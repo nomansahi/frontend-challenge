@@ -4,29 +4,40 @@ import { Card, Col, Container, Row } from "react-bootstrap";
 
 function CardList() {
   const [countries, setCountries] = useState([]);
-  const [filteredData, setFilteredData] = useState("");
-
-  const filteredCountries = countries.filter((country) => {
-    return country.name.common
-      .toLowerCase()
-      .includes(filteredData.toLowerCase());
-  });
+  const [filteredCountries, setFilteredCountries] = useState([]);
+  const [searchText, setSearchText] = useState("");
+  const [filterRegion, setFilterRegion] = useState();
 
   useEffect(() => {
     fetch("https://restcountries.com/v3.1/all")
       .then((response) => response.json())
       .then((data) => {
-        const setFilteredData = data.map((d) => ({
+        const transformedData = data.map((d) => ({
           name: d.name,
           flag: d.flags.png,
           population: d.population,
           region: d.region,
           capital: d.capital,
         }));
-        setCountries(setFilteredData);
+        setCountries([...transformedData]);
+        setFilteredCountries([...transformedData]);
       })
       .catch((error) => console.log(error));
   }, []);
+
+  useEffect(() => {
+    let data = [...countries];
+    if (filterRegion) {
+      data = data.filter((country) => country.region === filterRegion);
+    }
+    if (searchText) {
+      data = data.filter((country) =>
+        country.name.common.toLowerCase().includes(searchText.toLowerCase())
+      );
+    }
+
+    setFilteredCountries(data);
+  }, [filterRegion, searchText]);
 
   return (
     <Container className="row mt-4 ms-4">
@@ -35,14 +46,26 @@ function CardList() {
           <input
             type="text"
             class="form-control "
-            value={filteredData}
+            value={searchText}
             id="exampleFormControlInput1"
             placeholder="Search"
-            onChange={(e) => setFilteredData(e.target.value)}
+            onChange={(e) => setSearchText(e.target.value)}
           />
         </Col>
         <Col>
-          <FilterDropdown />
+          <div>
+            <select
+              id="country-select"
+              onChange={(e) => setFilterRegion(e.target.value)}
+            >
+              <option value="">All</option>
+              <option value="Africa">Africa</option>
+              <option value="Americas">Americas</option>
+              <option value="Asia">Asia</option>
+              <option value="Europe">Europe</option>
+              <option value="Oceania">Oceania</option>
+            </select>
+          </div>
         </Col>
       </Row>
       {filteredCountries.map((c) => (
