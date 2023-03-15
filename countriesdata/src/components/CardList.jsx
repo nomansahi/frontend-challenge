@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import styled from "styled-components";
+
 import { Card, Col, Container, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
@@ -8,13 +8,6 @@ function CardList() {
   const [filteredCountries, setFilteredCountries] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [filterRegion, setFilterRegion] = useState();
-
-  const StyledLink = styled(Link)`
-  text-decoration: none;
-
-  &:focus, &:hover, &:visited, &:link, &:active {
-      text-decoration: none;
-`;
 
   useEffect(() => {
     fetch("https://restcountries.com/v3.1/all")
@@ -45,7 +38,7 @@ function CardList() {
     }
 
     setFilteredCountries(data);
-  }, [filterRegion, searchText]);
+  }, [filterRegion, searchText, countries]);
 
   return (
     <Container className="row mt-4 ms-4">
@@ -82,7 +75,11 @@ function CardList() {
       </Row>
       {filteredCountries.map((c) => (
         <Col md="3" className="">
-          <Link to={`/${c.name.common}`} style={{ listStyle: "none" }}>
+          <Link
+            to={`/${c.name.common}`}
+            style={{ listStyle: "none" }}
+            className="no-link-style"
+          >
             <Card className="mt-4 mx-2">
               <Card.Img
                 variant="top"

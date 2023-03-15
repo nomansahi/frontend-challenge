@@ -1,9 +1,7 @@
 import "./App.css";
 import Navbar from "./components/Navbar";
-import InputSearch from "./components/InputSearch";
 
-import Card from "./components/CardList";
-import { BrowserRouter, Route, Router, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import CardList from "./components/CardList";
 import CountryDetail from "./components/CountryDetail";
 

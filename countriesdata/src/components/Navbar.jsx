@@ -1,5 +1,4 @@
 import React from "react";
-import {faBear}
 function Navbar() {
   return (
     <div
@@ -8,9 +7,8 @@ function Navbar() {
     >
       <p className="fw-bold ps-4">Where in the world?</p>
       <div>
-        {/* <FontAwesomeIcon icon="fa-regular fa-moon" /> */}
         <p>
-          <i class="fa-regular fa-moon"></i> Dark Mode
+          <i class="bi bi-moon"></i> Dark Mode
         </p>
       </div>
     </div>
