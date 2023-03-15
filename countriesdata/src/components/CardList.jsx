@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 
 import { Card, Col, Container, Row } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 function CardList() {
   const [countries, setCountries] = useState([]);
@@ -74,19 +75,21 @@ function CardList() {
       </Row>
       {filteredCountries.map((c) => (
         <Col md="3">
-          <Card className="m-2">
-            <Card.Img
-              variant="top"
-              src={c.flag}
-              style={{ width: "auto", height: "200px" }}
-            />
-            <Card.Body>
-              <Card.Title className="">{c.name.common}</Card.Title>
-              <Card.Text>population:{c.population}</Card.Text>
-              <Card.Text>Region:{c.region}</Card.Text>
-              <Card.Text>Capital:{c.capital}</Card.Text>
-            </Card.Body>
-          </Card>
+          <Link to={`/${c.name.common}`} style={{ listStyle: "none" }}>
+            <Card className="m-2">
+              <Card.Img
+                variant="top"
+                src={c.flag}
+                style={{ width: "auto", height: "200px" }}
+              />
+              <Card.Body>
+                <Card.Title className="">{c.name.common}</Card.Title>
+                <Card.Text>population:{c.population}</Card.Text>
+                <Card.Text>Region:{c.region}</Card.Text>
+                <Card.Text>Capital:{c.capital}</Card.Text>
+              </Card.Body>
+            </Card>
+          </Link>
         </Col>
       ))}
     </Container>
