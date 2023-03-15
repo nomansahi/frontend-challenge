@@ -30,7 +30,7 @@ function CountryDetail() {
         &larr; Back
       </Link>
 
-      <section className="p-4">
+      <section className="p-4 countryDetail">
         {country.map((item) => {
           return (
             <div key={item.population} className="d-flex m-4">
@@ -76,7 +76,8 @@ function CountryDetail() {
                       </ul>
                       <ul style={{ listStyle: "none" }}>
                         <li>
-                          Top Level Domain: <span className="textColor"></span>
+                          Top Level Domain:{" "}
+                          <span className="textColor">{item.symbol}</span>
                         </li>
                         <li>
                           Curriences:

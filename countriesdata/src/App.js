@@ -7,7 +7,7 @@ import CountryDetail from "./components/CountryDetail";
 
 function App() {
   return (
-    <div>
+    <div className="homepageSize">
       <BrowserRouter>
         <Routes>
           <Route

@@ -41,7 +41,7 @@ function CardList() {
   }, [filterRegion, searchText, countries]);
 
   return (
-    <Container className="row mt-4 ms-4">
+    <Container className="row mt-4 ms-4 ">
       <Row className="mt-4 d-flex justify-content-between ms-2">
         <Col sm={4}>
           <input
