@@ -26,7 +26,7 @@ function CountryDetail() {
 
   return (
     <Container>
-      <Link to="/" className="btn btn-primary m-4">
+      <Link to="/" className="btn btn-white shadow m-4">
         &larr; Back
       </Link>
       <section className="p-4">
@@ -42,22 +42,53 @@ function CountryDetail() {
 
             <article className="ms-4">
               <h1 className="">{item.name.official}</h1>
-
-              <ul className="">
-                <li>Capital: {item.capital[0]}</li>
-                <li>Population: {item.population.toLocaleString()}</li>
-                <li>Region: {item.region}</li>
-                <li>Subregion: {item.subregion}</li>
-              </ul>
+              <div className="d-flex ">
+                <ul style={{ listStyle: "none" }}>
+                  <li className="">
+                    Native Name:
+                    <span className="textColor">{item.name.nativeName[0]}</span>
+                  </li>
+                  <li>
+                    Capital:
+                    <span className="textColor">{item.capital[0]}</span>
+                  </li>
+                  <li>
+                    Population:
+                    <span className="textColor">
+                      {item.population.toLocaleString()}
+                    </span>
+                  </li>
+                  <li>
+                    Region: <span className="textColor">{item.region}</span>
+                  </li>
+                  <li>
+                    Subregion:
+                    <span className="textColor">{item.subregion}</span>
+                  </li>
+                </ul>
+                <ul style={{ listStyle: "none" }}>
+                  <li>
+                    Top Level Domain: <span className="textColor"></span>
+                  </li>
+                  <li>
+                    Curriences:{" "}
+                    <span className="textColor">{item.curriences}</span>
+                  </li>
+                  <li>
+                    Languages:{" "}
+                    <span className="textColor">{item.languages[0]}</span>
+                  </li>
+                </ul>
+              </div>
 
               {item.borders && (
-                <div className="">
-                  <h3 className="">Borders:</h3>
+                <div className="d-flex">
+                  <h3 className="">Borders Countries:</h3>
                   <ul className="d-flex ">
                     {item.borders.map((border, index) => (
                       <li
                         key={index}
-                        className="px-3 m-2 fw-bold bg-white shadow"
+                        className="px-3 m-2 fs-6 bg-white shadow px-4"
                         style={{ listStyle: "none" }}
                       >
                         {border}

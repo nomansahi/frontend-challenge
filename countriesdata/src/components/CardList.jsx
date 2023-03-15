@@ -56,12 +56,12 @@ function CardList() {
         <Col sm={2}>
           <div>
             <select
-              className="btn btn-primary"
+              className="btn btn-white shadow"
               id="country-select"
               onChange={(e) => setFilterRegion(e.target.value)}
             >
               <option value="" className="btn btn-danger">
-                Filter by origion
+                Filter by origion <i class="bi bi-chevron-down"></i>
               </option>
               <option value="">All</option>
               <option value="Africa">Africa</option>
@@ -88,9 +88,20 @@ function CardList() {
               />
               <Card.Body style={{ textDecoration: "none" }}>
                 <Card.Title className="">{c.name.common}</Card.Title>
-                <Card.Text>population:{c.population}</Card.Text>
-                <Card.Text>Region:{c.region}</Card.Text>
-                <Card.Text>Capital:{c.capital}</Card.Text>
+                <div style={{ lineHeight: "0.2" }} className="mt-4">
+                  <Card.Text>
+                    <span className="fw-bold pe-2">Population:</span>
+                    {c.population}
+                  </Card.Text>
+                  <Card.Text>
+                    <span className="fw-bold pe-2">Region:</span>
+                    {c.region}
+                  </Card.Text>
+                  <Card.Text>
+                    <span className="fw-bold pe-2">Capital:</span>
+                    {c.capital}
+                  </Card.Text>
+                </div>
               </Card.Body>
             </Card>
           </Link>
