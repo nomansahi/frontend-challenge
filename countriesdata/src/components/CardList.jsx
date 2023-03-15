@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-
+import styled from "styled-components";
 import { Card, Col, Container, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
@@ -8,6 +8,13 @@ function CardList() {
   const [filteredCountries, setFilteredCountries] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [filterRegion, setFilterRegion] = useState();
+
+  const StyledLink = styled(Link)`
+  text-decoration: none;
+
+  &:focus, &:hover, &:visited, &:link, &:active {
+      text-decoration: none;
+`;
 
   useEffect(() => {
     fetch("https://restcountries.com/v3.1/all")
@@ -42,8 +49,8 @@ function CardList() {
 
   return (
     <Container className="row mt-4 ms-4">
-      <Row width="full" className="mt-4 d-flex justify-content-between">
-        <Col sm={8}>
+      <Row className="mt-4 d-flex justify-content-between ms-2">
+        <Col sm={4}>
           <input
             type="text"
             class="form-control "
@@ -53,7 +60,7 @@ function CardList() {
             onChange={(e) => setSearchText(e.target.value)}
           />
         </Col>
-        <Col>
+        <Col sm={2}>
           <div>
             <select
               className="btn btn-primary"
@@ -74,15 +81,15 @@ function CardList() {
         </Col>
       </Row>
       {filteredCountries.map((c) => (
-        <Col md="3">
+        <Col md="3" className="">
           <Link to={`/${c.name.common}`} style={{ listStyle: "none" }}>
-            <Card className="m-2">
+            <Card className="mt-4 mx-2">
               <Card.Img
                 variant="top"
                 src={c.flag}
                 style={{ width: "auto", height: "200px" }}
               />
-              <Card.Body>
+              <Card.Body style={{ textDecoration: "none" }}>
                 <Card.Title className="">{c.name.common}</Card.Title>
                 <Card.Text>population:{c.population}</Card.Text>
                 <Card.Text>Region:{c.region}</Card.Text>
