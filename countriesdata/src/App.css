@@ -5,3 +5,8 @@
 .textColor {
   color: #696969;
 }
+.media.q {
+  @media (min-width: 576px) {
+    margin-top: 4px;
+  }
+}
